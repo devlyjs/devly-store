@@ -1,12 +1,16 @@
 {
-  "name": "lantis-store",
-  "version": "0.0.1",
-  "description": "",
+  "name": "@lantis/lantis-store",
+  "version": "1.0.0",
+  "description": "Shared store for lantis.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aorinevo/lantis-store"
+  },
+  "author": "Aori Nevo",
   "license": "ISC",
   "dependencies": {
     "redux": "^4.0.0"
