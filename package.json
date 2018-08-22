@@ -1,14 +1,14 @@
 {
-  "name": "@lantis/lantis-store",
+  "name": "@devly/devly-store",
   "version": "1.3.0",
-  "description": "Shared store for lantis.",
+  "description": "Shared store for devly.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/aorinevo/lantis-store"
+    "url": "https://github.com/devly/devly-store"
   },
   "author": "Aori Nevo",
   "license": "ISC",
