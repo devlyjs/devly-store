@@ -5,7 +5,7 @@ const { combineReducers, createStore } = require('redux');
 class ReducerRegistry {
   constructor() {
     this._emitChange = null;
-    this._reducers = {};
+    this._reducers = {test: (state={})=> state};
   }
 
   getReducers() {
@@ -29,22 +29,24 @@ class ReducerRegistry {
 
 module.exports = ReducerRegistry;
 
-// // Preserve initial state for not-yet-loaded reducers
-// const combine = (reducers) => {
-//   const reducerNames = Object.keys(reducers);
-//   Object.keys(initialState).forEach(item => {
-//     if (reducerNames.indexOf(item) === -1) {
-//       reducers[item] = (state = null) => state;
-//     }
-//   });
-//   return combineReducers(reducers);
-// };
+const initialState ={};
+// Preserve initial state for not-yet-loaded reducers
+const combine = (reducers) => {
+  const reducerNames = Object.keys(reducers);
+  Object.keys(initialState).forEach(item => {
+    if (reducerNames.indexOf(item) === -1) {
+      reducers[item] = (state = null) => state;
+    }
+  });
+  return combineReducers(reducers);
+};
 
 const reducerRegistry = new ReducerRegistry();
-const store = createStore(()=>{}, {});
+const store = createStore(combineReducers(reducerRegistry.getReducers()), {});
 // Replace the store's reducer whenever a new reducer is registered.
 reducerRegistry.setChangeListener(reducers => {
-  store.replaceReducer(combineReducers(reducers));
+  const temp  = combineReducers(reducers);
+  store.replaceReducer(temp);
 });
 
 module.exports = {store, reducerRegistry};
